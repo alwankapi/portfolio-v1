@@ -1,14 +1,37 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const links = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
+  const [activeSection, setActiveSection] = useState("home");
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: "-50% 0px -50% 0px" }
+    );
+
+    const sections = document.querySelectorAll("section[id]");
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <motion.nav
       initial={{ opacity: 0, y: -16 }}
@@ -22,7 +45,11 @@ export default function Navbar() {
           <li key={link.href}>
             <a
               href={link.href}
-              className="rounded-full px-3 py-2 transition duration-300 hover:bg-[#0a0a0a] hover:text-white"
+              className={`rounded-full px-3 py-2 transition duration-300 ${
+                activeSection === link.href.slice(1)
+                  ? "bg-[#0a0a0a] text-white"
+                  : "hover:bg-[#0a0a0a] hover:text-white"
+              }`}
             >
               {link.label}
             </a>
