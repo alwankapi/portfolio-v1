@@ -65,7 +65,7 @@ export default function Footer() {
 
         <div className="mt-10 border-t-2 border-[#2a2a2a] pt-6 text-center">
           <p className="text-xs font-semibold tracking-[0.12em] text-[#6a6a6a]">
-            &copy; {new Date().getFullYear()} Alwan Kapi Muntaha. Built with Next.js & Tailwind CSS.
+            &copy; {new Date().getFullYear()} Alwan Kapi Muntaha. All rights reserved.
           </p>
         </div>
       </div>

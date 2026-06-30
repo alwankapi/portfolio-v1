@@ -16,8 +16,8 @@ const socials = [
   },
   {
     label: "Email",
-    href: "mailto:alwankapimuntaha@example.com",
-    handle: "alwankapimuntaha@example.com",
+    href: "mailto:alwankapimuntaha.com",
+    handle: "alwankapimuntaha.com",
   },
 ];
 
@@ -54,7 +54,7 @@ export default function ContactSection() {
 
           <div className="mt-10 flex flex-wrap gap-4">
             <a
-              href="mailto:alwankapimuntaha@example.com"
+              href="mailto:alwankapimuntaha.com"
               className="inline-flex items-center gap-3 rounded-full border-2 border-[#0a0a0a] bg-[#0a0a0a] px-6 py-3 text-sm font-black uppercase tracking-[0.18em] text-white transition duration-300 hover:-translate-y-1 hover:bg-white hover:text-[#0a0a0a] hover:shadow-[7px_7px_0_#0a0a0a]"
             >
               <Mail className="h-4 w-4" />
