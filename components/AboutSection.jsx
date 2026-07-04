@@ -1,6 +1,7 @@
 "use client";
 
 import ProfileCard from "@/components/ProfileCard";
+import PixelTransition from "@/components/PixelTransition";
 import { motion } from "framer-motion";
 
 export default function AboutSection() {
@@ -21,19 +22,51 @@ export default function AboutSection() {
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
           className="relative mx-auto w-full max-w-[380px] lg:max-w-[420px]"
         >
-          <ProfileCard
-            name="Alwan Kapi"
-            title="Web Developer"
-            handle="alwankapi"
-            status="Available"
-            contactText="Contact Me"
-            avatarUrl="/images/foto-awank3.jpeg"
-            showUserInfo={true}
-            enableTilt={true}
-            enableMobileTilt={false}
-            behindGlowEnabled={true}
-            innerGradient="linear-gradient(145deg, rgba(10, 10, 10, 0.7) 0%, rgba(74, 74, 74, 0.5) 100%)"
-            behindGlowColor="rgba(10, 10, 10, 0.5)"
+          <PixelTransition
+            firstContent={
+              <ProfileCard
+                name="Alwan Kapi"
+                title="Web Developer"
+                handle="alwankapi"
+                status="Available"
+                contactText="Contact Me"
+                avatarUrl="/images/foto-awank bergaya formal.png"
+                showUserInfo={true}
+                enableTilt={true}
+                enableMobileTilt={false}
+                behindGlowEnabled={true}
+                innerGradient="linear-gradient(145deg, rgba(10, 10, 10, 0.7) 0%, rgba(74, 74, 74, 0.5) 100%)"
+                behindGlowColor="rgba(10, 10, 10, 0.5)"
+              />
+            }
+            secondContent={
+              <div
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  display: "grid",
+                  placeItems: "center",
+                  backgroundColor: "#0a0a0a",
+                }}
+              >
+                <p
+                  style={{
+                    fontWeight: 900,
+                    fontSize: "3rem",
+                    color: "#ffffff",
+                    textAlign: "center",
+                  }}
+                >
+                  Hi There! 👋
+                </p>
+              </div>
+            }
+            gridSize={12}
+            pixelColor="#ffffff"
+            once={false}
+            animationStepDuration={0.4}
+            className="w-full h-full"
+            style={{ width: "100%", height: "auto", border: "none", borderRadius: 0, backgroundColor: "transparent" }}
           />
         </motion.div>
 

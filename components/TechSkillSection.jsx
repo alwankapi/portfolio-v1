@@ -12,6 +12,8 @@ import {
   SiPhp,
   SiTailwindcss,
 } from "react-icons/si";
+import LogoLoop from "@/components/LogoLoop";
+import ClickSpark from "@/components/ClickSpark";
 
 const skills = [
   { name: "HTML", icon: SiHtml5 },
@@ -79,48 +81,82 @@ export default function TechSkillSection() {
             className="absolute -inset-5 border-2 border-[#0a0a0a] bg-white shadow-[18px_18px_0_#0a0a0a]"
           />
 
-          <div className="relative grid grid-cols-2 gap-3 bg-white p-3 md:grid-cols-3">
-            {skills.map((skill, index) => {
-              const Icon = skill.icon;
+          <ClickSpark
+            sparkColor="#0a0a0a"
+            sparkSize={15}
+            sparkRadius={25}
+            sparkCount={10}
+            duration={500}
+          >
+            <div className="relative grid grid-cols-2 gap-3 bg-white p-3 md:grid-cols-3">
+              {skills.map((skill, index) => {
+                const Icon = skill.icon;
 
-              return (
-                <motion.article
-                  key={skill.name}
-                  initial={{ opacity: 0, y: 30, scale: 0.96 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: true, amount: 0.35 }}
-                  transition={{
-                    duration: 0.58,
-                    delay: index * 0.045,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  whileHover={{ y: -8, rotate: index % 2 === 0 ? -1 : 1 }}
-                  className="group relative overflow-hidden border-2 border-[#0a0a0a] bg-[#f7f7f2] p-5 transition duration-300 hover:bg-[#0a0a0a] hover:text-white hover:shadow-[8px_8px_0_#b8b8aa] sm:p-6"
-                >
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100"
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(to right, rgba(255,255,255,0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.12) 1px, transparent 1px)",
-                      backgroundSize: "18px 18px",
+                return (
+                  <motion.article
+                    key={skill.name}
+                    initial={{ opacity: 0, y: 30, scale: 0.96 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    viewport={{ once: true, amount: 0.35 }}
+                    transition={{
+                      duration: 0.58,
+                      delay: index * 0.045,
+                      ease: [0.22, 1, 0.36, 1],
                     }}
-                  />
-                  <div className="relative flex min-h-28 flex-col justify-between">
-                    <Icon className="text-4xl text-[#0a0a0a] transition duration-300 group-hover:text-white sm:text-5xl" />
-                    <div>
-                      <span className="mb-3 block h-1.5 w-10 bg-[#0a0a0a] transition duration-300 group-hover:bg-white" />
-                      <h3 className="text-base font-black uppercase tracking-[-0.03em] sm:text-lg">
-                        {skill.name}
-                      </h3>
+                    whileHover={{ y: -8, rotate: index % 2 === 0 ? -1 : 1 }}
+                    className="group relative overflow-hidden border-2 border-[#0a0a0a] bg-[#f7f7f2] p-5 transition duration-300 hover:bg-[#0a0a0a] hover:text-white hover:shadow-[8px_8px_0_#b8b8aa] sm:p-6"
+                  >
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100"
+                      style={{
+                        backgroundImage:
+                          "linear-gradient(to right, rgba(255,255,255,0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.12) 1px, transparent 1px)",
+                        backgroundSize: "18px 18px",
+                      }}
+                    />
+                    <div className="relative flex min-h-28 flex-col justify-between">
+                      <Icon className="text-4xl text-[#0a0a0a] transition duration-300 group-hover:text-white sm:text-5xl" />
+                      <div>
+                        <span className="mb-3 block h-1.5 w-10 bg-[#0a0a0a] transition duration-300 group-hover:bg-white" />
+                        <h3 className="text-base font-black uppercase tracking-[-0.03em] sm:text-lg">
+                          {skill.name}
+                        </h3>
+                      </div>
                     </div>
-                  </div>
-                </motion.article>
-              );
-            })}
-          </div>
+                  </motion.article>
+                );
+              })}
+            </div>
+          </ClickSpark>
         </div>
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.35 }}
+        transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+        className="relative z-10 mx-auto mt-16 max-w-7xl"
+      >
+        <div className="h-24 overflow-hidden border-2 border-[#0a0a0a] bg-white shadow-[6px_6px_0_#0a0a0a]">
+          <LogoLoop
+            logos={skills.map((skill) => ({
+              node: <skill.icon />,
+              title: skill.name,
+            }))}
+            speed={80}
+            direction="left"
+            logoHeight={40}
+            gap={48}
+            hoverSpeed={20}
+            scaleOnHover
+            fadeOut
+            fadeOutColor="#ffffff"
+            ariaLabel="Technology stack"
+          />
+        </div>
+      </motion.div>
     </section>
   );
 }
