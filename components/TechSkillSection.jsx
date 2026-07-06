@@ -12,19 +12,18 @@ import {
   SiPhp,
   SiTailwindcss,
 } from "react-icons/si";
-import LogoLoop from "@/components/LogoLoop";
 import ClickSpark from "@/components/ClickSpark";
 
 const skills = [
-  { name: "HTML", icon: SiHtml5 },
-  { name: "CSS", icon: SiCss },
-  { name: "JavaScript", icon: SiJavascript },
-  { name: "PHP", icon: SiPhp },
-  { name: "Laravel", icon: SiLaravel },
-  { name: "CodeIgniter 4", icon: SiCodeigniter },
-  { name: "Tailwind CSS", icon: SiTailwindcss },
-  { name: "Flutter", icon: SiFlutter },
-  { name: "Dart", icon: SiDart },
+  { name: "HTML", icon: SiHtml5, color: "#E34F26" },
+  { name: "CSS", icon: SiCss, color: "#264DE4" },
+  { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+  { name: "PHP", icon: SiPhp, color: "#777BB4" },
+  { name: "Laravel", icon: SiLaravel, color: "#FF2D20" },
+  { name: "CodeIgniter 4", icon: SiCodeigniter, color: "#EF4223" },
+  { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
+  { name: "Flutter", icon: SiFlutter, color: "#54C5F8" },
+  { name: "Dart", icon: SiDart, color: "#0175C2" },
 ];
 
 export default function TechSkillSection() {
@@ -95,6 +94,7 @@ export default function TechSkillSection() {
                 return (
                   <motion.article
                     key={skill.name}
+                    style={{ "--brand-color": skill.color }}
                     initial={{ opacity: 0, y: 30, scale: 0.96 }}
                     whileInView={{ opacity: 1, y: 0, scale: 1 }}
                     viewport={{ once: true, amount: 0.35 }}
@@ -116,7 +116,7 @@ export default function TechSkillSection() {
                       }}
                     />
                     <div className="relative flex min-h-28 flex-col justify-between">
-                      <Icon className="text-4xl text-[#0a0a0a] transition duration-300 group-hover:text-white sm:text-5xl" />
+                      <Icon className="text-4xl text-[#0a0a0a] transition duration-300 group-hover:text-[var(--brand-color)] sm:text-5xl" />
                       <div>
                         <span className="mb-3 block h-1.5 w-10 bg-[#0a0a0a] transition duration-300 group-hover:bg-white" />
                         <h3 className="text-base font-black uppercase tracking-[-0.03em] sm:text-lg">
@@ -132,31 +132,6 @@ export default function TechSkillSection() {
         </div>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.35 }}
-        transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-        className="relative z-10 mx-auto mt-16 max-w-7xl"
-      >
-        <div className="h-24 overflow-hidden border-2 border-[#0a0a0a] bg-white shadow-[6px_6px_0_#0a0a0a]">
-          <LogoLoop
-            logos={skills.map((skill) => ({
-              node: <skill.icon />,
-              title: skill.name,
-            }))}
-            speed={80}
-            direction="left"
-            logoHeight={40}
-            gap={48}
-            hoverSpeed={20}
-            scaleOnHover
-            fadeOut
-            fadeOutColor="#ffffff"
-            ariaLabel="Technology stack"
-          />
-        </div>
-      </motion.div>
     </section>
   );
 }

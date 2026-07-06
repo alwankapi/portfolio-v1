@@ -5,11 +5,11 @@ import { ExternalLink, Github } from "lucide-react";
 
 const projects = [
   {
-    title: "Project One",
-    desc: "A full-stack web application built with Next.js and Tailwind CSS. Features authentication, real-time updates, and a clean dashboard interface.",
-    tags: ["Next.js", "Tailwind CSS", "Prisma"],
+    title: "Amanah House",
+    desc: "Property listing platform for real estate marketplace. Features property search, filtering, listing details, and responsive design for seamless browsing experience.",
+    tags: ["CodeIgniter 4", "Bootstrap", "MySQL"],
     github: "https://github.com/alwankapi",
-    demo: "#",
+    demo: "https://amanah-house.iceiy.com/?i=1",
   },
   {
     title: "Project Two",

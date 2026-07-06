@@ -25,7 +25,7 @@ export const metadata = {
   openGraph: {
     title: "Alwan Kapi Muntaha | Portfolio",
     description:
-      "Personal portfolio of Alwan Kapi Muntaha — Web Developer, Program Analyst, and UI/UX Designer.",
+      "Personal portfolio of Alwan Kapi Muntaha — Web Developer, Program Analyst.",
     url: "https://alwankapi.dev",
     siteName: "Alwan Kapi Muntaha",
     locale: "en_US",
@@ -35,7 +35,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Alwan Kapi Muntaha | Portfolio",
     description:
-      "Personal portfolio of Alwan Kapi Muntaha — Web Developer, Program Analyst, and UI/UX Designer.",
+      "Personal portfolio of Alwan Kapi Muntaha — Web Developer, Program Analyst.",
   },
   icons: {
     icon: "/favicon.svg",
