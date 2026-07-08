@@ -90,12 +90,20 @@
   z-index: 2;
   bottom: 10%;
   left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
   transform: translate(-50%, 10%);
   width: 70%;
   height: 80%;
   background: var(--paper-1);
   border-radius: 10px;
   transition: all 0.3s ease-in-out;
+}
+
+.folder.open .paper {
+  z-index: 4;
 }
 
 .paper:nth-child(2) {

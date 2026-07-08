@@ -8,7 +8,7 @@ import TechSkillSection from "@/components/TechSkillSection";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-[#f7f7f2] text-[#0a0a0a]">
+    <main className="relative min-h-screen overflow-x-hidden bg-[#f5f0e8] text-[#0a0a0a]">
       <NoiseOverlay />
       <div className="snap-y snap-mandatory overflow-y-auto scroll-smooth">
         <HeroSection />
