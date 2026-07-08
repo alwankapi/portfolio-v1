@@ -30,7 +30,7 @@ export default function TechSkillSection() {
   return (
     <section
       id="skills"
-      className="relative min-h-screen snap-start overflow-hidden bg-[#f5f0e8] px-6 py-24 text-[#0a0a0a] sm:px-10 lg:px-16"
+      className="relative min-h-screen snap-start overflow-hidden bg-[#f7f7f2] px-6 py-24 text-[#0a0a0a] sm:px-10 lg:px-16"
     >
       <div aria-hidden="true" className="absolute inset-0 grid-paper opacity-80" />
       <div aria-hidden="true" className="absolute -right-20 top-24 h-56 w-56 rounded-full border-2 border-[#0a0a0a] bg-white shadow-[14px_14px_0_#0a0a0a]" />
