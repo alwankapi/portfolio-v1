@@ -3,9 +3,15 @@
 import BlurText from "@/components/BlurText";
 import DecryptedText from "@/components/DecryptedText";
 import Folder from "@/components/Folder";
+import FolderCardItem from "@/components/FolderCardItem";
 import { motion } from "framer-motion";
 
 export default function HeroSection() {
+  const scrollTo = (id) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section
       id="home"
@@ -54,9 +60,35 @@ export default function HeroSection() {
                   initial={{ opacity: 0, filter: "blur(12px)", y: -18 }}
                   animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
                   transition={{ duration: 0.7, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                  className="mb-4 ml-8 inline-flex sm:mb-6 sm:ml-12"
+                  className="mb-4 ml-8 inline-flex flex-col items-center sm:mb-6 sm:ml-12"
                 >
-                  <Folder color="#0a0a0a" size={1.5} />
+                  <Folder
+                    color="#0a0a0a"
+                    size={1.5}
+                    items={[
+                      <FolderCardItem
+                        key="about"
+                        icon="user"
+                        label="About"
+                        onClick={() => scrollTo("about")}
+                      />,
+                      <FolderCardItem
+                        key="projects"
+                        icon="code"
+                        label="Portfolio"
+                        onClick={() => scrollTo("projects")}
+                      />,
+                      <FolderCardItem
+                        key="contact"
+                        icon="briefcase"
+                        label="Contact"
+                        onClick={() => scrollTo("contact")}
+                      />,
+                    ]}
+                  />
+                  <span className="mt-2 text-[10px] sm:text-xs font-bold tracking-[0.15em] text-[#0a0a0a]/60 uppercase whitespace-nowrap">
+                    {"< portfolio. />"}
+                  </span>
                 </motion.span>
               </span>
             </h1>

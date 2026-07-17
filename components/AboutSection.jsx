@@ -1,96 +1,94 @@
 "use client";
 
-import ProfileCard from "@/components/ProfileCard";
-import PixelTransition from "@/components/PixelTransition";
 import { motion } from "framer-motion";
 
 export default function AboutSection() {
   return (
     <section
       id="about"
-      className="relative min-h-screen snap-start overflow-hidden bg-[#ffffff] px-6 py-24 text-[#0a0a0a] sm:px-10 lg:px-16"
+      className="grid-paper relative min-h-screen snap-start overflow-hidden bg-[#f7f7f2] px-4 py-20 text-[#0a0a0a] sm:px-8 sm:py-32"
     >
-      <div aria-hidden="true" className="absolute inset-0 grid-paper opacity-60" />
-      <div aria-hidden="true" className="absolute left-0 top-0 h-full w-5 bg-[#0a0a0a]" />
-      <div aria-hidden="true" className="absolute bottom-10 right-10 hidden h-24 w-24 border-2 border-[#0a0a0a] bg-[#f7f7f2] shadow-[9px_9px_0_#0a0a0a] lg:block" />
+      {/* Background decorations */}
+      <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-[10%] left-[5%] w-32 h-32 border-[3px] border-[#D01B1B]/20 rounded-full animate-float" />
+        <div className="absolute top-[30%] right-[8%] w-20 h-20 bg-[#D01B1B]/5 rotate-45 animate-float-reverse" />
+        <div className="absolute bottom-[20%] left-[10%] w-16 h-16 border-[3px] border-[#0a0a0a]/10 animate-spin-slow" />
+        <div className="absolute bottom-[40%] right-[15%] w-24 h-24 bg-[#F4EBD0]/60 rounded-full animate-float" />
+      </div>
 
-      <div className="relative z-10 mx-auto grid min-h-[calc(100vh-12rem)] max-w-7xl items-center gap-12 lg:grid-cols-[0.82fr_1.18fr] xl:gap-20">
-        <motion.div
-          initial={{ opacity: 0, x: -44, rotate: -1 }}
-          whileInView={{ opacity: 1, x: 0, rotate: 0 }}
-          viewport={{ once: true, amount: 0.35 }}
-          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mx-auto w-full max-w-[380px] lg:max-w-[420px]"
-        >
-          <PixelTransition
-            firstContent={
-              <ProfileCard
-                name="Alwan Kapi"
-                title="Web Developer"
-                handle="alwankapi"
-                status="Available"
-                contactText="Contact Me"
-                avatarUrl="/images/foto-awank bergaya formal.png"
-                showUserInfo={true}
-                enableTilt={true}
-                enableMobileTilt={false}
-                behindGlowEnabled={true}
-                innerGradient="linear-gradient(145deg, rgba(10, 10, 10, 0.7) 0%, rgba(74, 74, 74, 0.5) 100%)"
-                behindGlowColor="rgba(10, 10, 10, 0.5)"
+      <div className="relative z-10 mx-auto max-w-5xl">
+        {/* Section label */}
+        <div className="flex items-center gap-4 mb-12">
+          <span className="text-xs font-black tracking-[0.32em] uppercase text-[#0a0a0a]">01</span>
+          <div className="flex-1 h-[2px] bg-[#0a0a0a]" />
+          <span className="text-xs font-black tracking-[0.32em] uppercase text-[#0a0a0a]/60">About</span>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          {/* Photo */}
+          <motion.div
+            initial={{ opacity: 0, x: -44 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-4"
+          >
+            <div className="border-2 border-[#0a0a0a] bg-white p-2 shadow-[8px_8px_0_#0a0a0a]">
+              <img
+                src="/images/foto-awank bergaya formal.png"
+                alt="Portrait"
+                className="w-full aspect-[4/4.5] object-cover object-top"
               />
-            }
-            secondContent={
-              <div
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  display: "grid",
-                  placeItems: "center",
-                  backgroundColor: "#0a0a0a",
-                }}
-              >
-                <p
-                  style={{
-                    fontWeight: 900,
-                    fontSize: "3rem",
-                    color: "#ffffff",
-                    textAlign: "center",
-                  }}
-                >
-                  Hi There! 👋
+              <div className="mt-4 px-2 pb-2">
+                <h3 className="text-lg sm:text-xl font-black uppercase tracking-tight">
+                  Alwan Kapi Muntaha
+                </h3>
+                <div className="mt-2 mb-3 h-[2px] w-full bg-[#0a0a0a]" />
+                <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.1em] text-[#0a0a0a]/60 whitespace-nowrap">
+                  Web Developer | Program Analyst
                 </p>
               </div>
-            }
-            gridSize={12}
-            pixelColor="#ffffff"
-            once={false}
-            animationStepDuration={0.4}
-            className="w-full h-full"
-            style={{ width: "100%", height: "auto", border: "none", borderRadius: 0, backgroundColor: "transparent" }}
-          />
-        </motion.div>
+            </div>
+          </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 46 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.35 }}
-          transition={{ duration: 0.85, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <div className="mb-8 inline-flex border-2 border-[#0a0a0a] bg-[#0a0a0a] px-4 py-2 text-xs font-black uppercase tracking-[0.32em] text-white shadow-[6px_6px_0_#d8d8c8]">
-            Profile / 02
-          </div>
+          {/* Text */}
+          <motion.div
+            initial={{ opacity: 0, y: 46 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 0.85, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-8 flex flex-col justify-center"
+          >
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-[-0.1em] leading-[0.85] mb-6">
+              ABOUT ME
+            </h2>
+            <div className="mb-6 h-1 w-32 bg-[#0a0a0a]" />
+            <div className="space-y-4 text-[#4b4b4b] leading-relaxed text-sm sm:text-base">
+              <p>
+                Saya adalah seorang pengembang web dan desainer yang berbasis di Indonesia. Dengan pengalaman dalam membangun berbagai macam proyek digital, saya selalu berusaha menciptakan solusi yang tidak hanya fungsional tapi juga memiliki karakter.
+              </p>
+              <p>
+                Pendekatan saya menggabungkan kebersihan kode dengan keberanian visual — setiap proyek adalah kesempatan untuk mengeksplorasi batas antara fungsi dan ekspresi.
+              </p>
+            </div>
 
-          <h2 className="text-[clamp(3.4rem,8vw,8.5rem)] font-black uppercase leading-[0.78] tracking-[-0.1em]">
-            ABOUT
-            <br />
-            ME
-          </h2>
-
-          <p className="mt-8 max-w-3xl border-l-4 border-[#0a0a0a] pl-5 text-base leading-8 text-[#323232] sm:text-lg">
-            I am a Web Developer with a strong interest in website development, program analysis, and user interface design. I enjoy creating modern, responsive, and user-friendly digital experiences. My focus is on building clean web interfaces, analyzing system needs, and turning ideas into functional applications using technologies such as PHP, CodeIgniter, Laravel, Tailwind CSS, JavaScript, and Flutter.
-          </p>
-
-        </motion.div>
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-4 mt-10">
+              <div className="border-2 border-[#0a0a0a] p-4 bg-white shadow-[4px_4px_0_#0a0a0a]">
+                <div className="text-2xl sm:text-3xl font-black text-[#0a0a0a]">3+</div>
+                <div className="text-xs font-bold tracking-[0.15em] uppercase mt-1 text-[#0a0a0a]/60">Tahun</div>
+              </div>
+              <div className="border-2 border-[#0a0a0a] p-4 bg-white shadow-[4px_4px_0_#0a0a0a]">
+                <div className="text-2xl sm:text-3xl font-black text-[#0a0a0a]">20+</div>
+                <div className="text-xs font-bold tracking-[0.15em] uppercase mt-1 text-[#0a0a0a]/60">Proyek</div>
+              </div>
+              <div className="border-2 border-[#0a0a0a] p-4 bg-white shadow-[4px_4px_0_#0a0a0a]">
+                <div className="text-2xl sm:text-3xl font-black text-[#0a0a0a]">15+</div>
+                <div className="text-xs font-bold tracking-[0.15em] uppercase mt-1 text-[#0a0a0a]/60">Klien</div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
