@@ -86,9 +86,6 @@ export default function HeroSection() {
                       />,
                     ]}
                   />
-                  <span className="mt-2 text-[10px] sm:text-xs font-bold tracking-[0.15em] text-[#0a0a0a]/60 uppercase whitespace-nowrap">
-                    {"< portfolio. />"}
-                  </span>
                 </motion.span>
               </span>
             </h1>
