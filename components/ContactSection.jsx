@@ -44,12 +44,6 @@ export default function ContactSection() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-5xl">
-        {/* Section label */}
-        <div className="flex items-center gap-4 mb-12">
-          <span className="text-xs font-black tracking-[0.32em] uppercase text-[#0a0a0a]">05</span>
-          <div className="flex-1 h-[2px] bg-[#0a0a0a]" />
-          <span className="text-xs font-black tracking-[0.32em] uppercase text-[#0a0a0a]/60">Contact</span>
-        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Left */}

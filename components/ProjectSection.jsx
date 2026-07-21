@@ -51,12 +51,6 @@ export default function ProjectSection() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-5xl">
-        {/* Section label */}
-        <div className="flex items-center gap-4 mb-12">
-          <span className="text-xs font-black tracking-[0.32em] uppercase text-[#0a0a0a]">02</span>
-          <div className="flex-1 h-[2px] bg-[#0a0a0a]" />
-          <span className="text-xs font-black tracking-[0.32em] uppercase text-[#0a0a0a]/60">Projects</span>
-        </div>
 
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-[-0.1em] leading-[0.85] mb-6">
           SELECTED
