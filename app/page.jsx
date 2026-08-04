@@ -4,13 +4,14 @@ import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
 import KineticGrid from "@/components/KineticGrid";
 import MarqueeDivider from "@/components/MarqueeDivider";
+import Navbar from "@/components/Navbar";
 import NoiseOverlay from "@/components/NoiseOverlay";
 import ProjectSection from "@/components/ProjectSection";
 import TechSkillSection from "@/components/TechSkillSection";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-[#0a0a0a] text-[#0a0a0a]">
+    <main className="relative min-h-screen overflow-x-hidden bg-paper text-ink">
       <div className="fixed inset-0 z-0">
         <KineticGrid
           background="#0a0a0a"
@@ -24,7 +25,9 @@ export default function Home() {
         />
       </div>
       <NoiseOverlay />
-      <div className="relative z-10 snap-y snap-mandatory overflow-y-auto scroll-smooth">
+      <Navbar />
+      {/* No scroll-snap here — Lenis owns the scrolling now. */}
+      <div className="relative z-10">
         <HeroSection />
         <MarqueeDivider />
         <AboutSection />

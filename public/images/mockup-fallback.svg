@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="Project preview unavailable">
+  <defs>
+    <pattern id="fgrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#0a0a0a" stroke-opacity="0.1" stroke-width="2"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="1000" fill="#f7f7f2"/>
+  <rect width="1600" height="1000" fill="url(#fgrid)"/>
+  <rect x="128" y="128" width="1344" height="744" fill="#0a0a0a" opacity="0.14"/>
+  <rect x="100" y="100" width="1344" height="744" fill="#ffffff" stroke="#0a0a0a" stroke-width="10"/>
+  <rect x="100" y="100" width="1344" height="96" fill="#0a0a0a"/>
+  <circle cx="160" cy="148" r="16" fill="#D01B1B"/>
+  <circle cx="214" cy="148" r="16" fill="#F4EBD0"/>
+  <circle cx="268" cy="148" r="16" fill="#ffffff" opacity="0.5"/>
+  <rect x="620" y="400" width="304" height="14" fill="#D01B1B"/>
+  <text x="772" y="370" text-anchor="middle" font-family="Space Grotesk,Inter,system-ui,sans-serif" font-size="76" font-weight="900" letter-spacing="-3" fill="#0a0a0a">PREVIEW</text>
+  <text x="772" y="480" text-anchor="middle" font-family="Space Grotesk,Inter,system-ui,sans-serif" font-size="30" font-weight="700" letter-spacing="6" fill="#4b4b4b">COMING SOON</text>
+  <rect x="560" y="560" width="424" height="120" fill="none" stroke="#0a0a0a" stroke-width="8" stroke-dasharray="24 18"/>
+  <text x="772" y="637" text-anchor="middle" font-family="Space Grotesk,Inter,system-ui,sans-serif" font-size="34" font-weight="900" letter-spacing="4" fill="#0a0a0a">WORK IN PROGRESS</text>
+</svg>

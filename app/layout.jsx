@@ -1,5 +1,10 @@
 import { Space_Grotesk } from "next/font/google";
+import CustomCursor from "@/components/CustomCursor";
+import ScrollProgress from "@/components/ScrollProgress";
+import SmoothScrollProvider from "@/components/SmoothScrollProvider";
+import ThemeProvider from "@/components/ThemeProvider";
 import "./globals.css";
+
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   display: "swap",
@@ -42,10 +47,34 @@ export const metadata = {
   },
 };
 
+// Applied before paint so the correct theme is on <html> with no flash.
+const themeInitScript = `
+(function() {
+  try {
+    var stored = localStorage.getItem('portfolio-theme');
+    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (stored === 'dark' || (!stored && prefersDark)) {
+      document.documentElement.classList.add('dark');
+    }
+  } catch (e) {}
+})();
+`;
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={spaceGrotesk.variable}>
-      <body className="relative">{children}</body>
+    <html lang="en" className={spaceGrotesk.variable} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
+      <body className="relative">
+        <ThemeProvider>
+          <SmoothScrollProvider>
+            <ScrollProgress />
+            <CustomCursor />
+            {children}
+          </SmoothScrollProvider>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

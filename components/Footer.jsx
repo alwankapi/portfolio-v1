@@ -2,10 +2,15 @@
 
 import { motion } from "framer-motion";
 import { ArrowUp } from "lucide-react";
+import MagneticButton from "@/components/MagneticButton";
 
 export default function Footer() {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (window.__lenis) {
+      window.__lenis.scrollTo(0, { duration: 1.4 });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   return (
@@ -14,24 +19,29 @@ export default function Footer() {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="relative border-t-2 border-[#0a0a0a] bg-[#0a0a0a] px-4 py-10 text-white sm:px-8 font-bold"
+      className="relative border-t-2 border-ink bg-ink px-4 py-10 font-bold text-paper sm:px-8"
     >
       <div className="mx-auto max-w-5xl">
         <div className="flex items-start justify-between gap-10">
-          <div>
-            <p className="text-xs text-white/40 tracking-[0.15em] uppercase">
-              © 2026 — Alwan Kapi Muntaha. All rights reserved.
-            </p>
-          </div>
+          <p className="text-xs uppercase tracking-[0.15em] text-paper/40">
+            © 2026 — Alwan Kapi Muntaha. All rights reserved.
+          </p>
 
-          <button
-            type="button"
+          <MagneticButton
             onClick={scrollToTop}
             aria-label="Scroll to top"
-            className="inline-flex h-12 w-12 items-center justify-center border-2 border-white bg-white text-[#0a0a0a] transition duration-300 hover:-translate-y-1 hover:bg-[#0a0a0a] hover:text-white hover:shadow-[5px_5px_0_white]"
+            strength={0.4}
+            whileHover={{ y: -4, boxShadow: "5px 5px 0 rgb(var(--paper))" }}
+            transition={{ type: "spring", stiffness: 300, damping: 18 }}
+            className="inline-flex h-12 w-12 flex-shrink-0 items-center justify-center border-2 border-paper bg-paper text-ink"
           >
-            <ArrowUp className="h-5 w-5" />
-          </button>
+            <motion.span
+              animate={{ y: [0, -3, 0] }}
+              transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <ArrowUp className="h-5 w-5" />
+            </motion.span>
+          </MagneticButton>
         </div>
       </div>
     </motion.footer>

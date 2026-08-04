@@ -1,87 +1,109 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Reveal, { RevealGroup, RevealItem } from "@/components/Reveal";
+import TiltCard from "@/components/TiltCard";
+
+const stats = [
+  { value: "3+", label: "Tahun" },
+  { value: "20+", label: "Proyek" },
+  { value: "15+", label: "Klien" },
+];
 
 export default function AboutSection() {
   return (
     <section
       id="about"
-      className="grid-paper relative min-h-screen snap-start overflow-hidden bg-[#f7f7f2] px-4 py-20 text-[#0a0a0a] sm:px-8 sm:py-32"
+      className="grid-paper relative min-h-screen overflow-hidden bg-paper px-4 py-20 text-ink sm:px-8 sm:py-32"
     >
       {/* Background decorations */}
-      <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[10%] left-[5%] w-32 h-32 border-[3px] border-[#D01B1B]/20 rounded-full animate-float" />
-        <div className="absolute top-[30%] right-[8%] w-20 h-20 bg-[#D01B1B]/5 rotate-45 animate-float-reverse" />
-        <div className="absolute bottom-[20%] left-[10%] w-16 h-16 border-[3px] border-[#0a0a0a]/10 animate-spin-slow" />
-        <div className="absolute bottom-[40%] right-[15%] w-24 h-24 bg-[#F4EBD0]/60 rounded-full animate-float" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <div className="absolute left-[5%] top-[10%] h-32 w-32 animate-float rounded-full border-[3px] border-brand/20" />
+        <div className="absolute right-[8%] top-[30%] h-20 w-20 rotate-45 animate-float-reverse bg-brand/5" />
+        <div className="absolute bottom-[20%] left-[10%] h-16 w-16 animate-spin-slow border-[3px] border-ink/10" />
+        <div className="absolute bottom-[40%] right-[15%] h-24 w-24 animate-float rounded-full bg-accent/60" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-5xl">
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
-          {/* Photo */}
-          <motion.div
-            initial={{ opacity: 0, x: -44 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.35 }}
-            transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-4"
-          >
-            <div className="border-2 border-[#0a0a0a] bg-white p-2 shadow-[8px_8px_0_#0a0a0a]">
-              <img
-                src="/images/foto-awank bergaya formal.png"
-                alt="Portrait"
-                className="w-full aspect-[4/4.5] object-cover object-top"
-              />
-              <div className="mt-4 px-2 pb-2">
-                <h3 className="text-lg sm:text-xl font-black uppercase tracking-tight">
-                  Alwan Kapi Muntaha
-                </h3>
-                <div className="mt-2 mb-3 h-[2px] w-full bg-[#0a0a0a]" />
-                <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.1em] text-[#0a0a0a]/60 whitespace-nowrap">
-                  Web Developer | Program Analyst
-                </p>
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12">
+          {/* Photo — 3D tilt frame */}
+          <Reveal direction="right" amount={0.35} className="lg:col-span-4">
+            <TiltCard max={12} scale={1.03} className="group h-full">
+              <div className="border-2 border-ink bg-surface p-2 shadow-brutal-lg">
+                <div className="overflow-hidden">
+                  <img
+                    src="/images/foto-awank bergaya formal.png"
+                    alt="Portrait of Alwan Kapi Muntaha"
+                    className="aspect-[4/4.5] w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
+                  />
+                </div>
+                <div className="mt-4 px-2 pb-2">
+                  <h3 className="text-lg font-black uppercase tracking-tight sm:text-xl">
+                    Alwan Kapi Muntaha
+                  </h3>
+                  <div className="mb-3 mt-2 h-[2px] w-full bg-ink" />
+                  <p className="whitespace-nowrap text-xs font-bold uppercase tracking-[0.1em] text-ink/60 sm:text-sm">
+                    Web Developer | Program Analyst
+                  </p>
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </TiltCard>
+          </Reveal>
 
           {/* Text */}
-          <motion.div
-            initial={{ opacity: 0, y: 46 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.35 }}
-            transition={{ duration: 0.85, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-8 flex flex-col justify-center"
-          >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-[-0.1em] leading-[0.85] mb-6">
-              ABOUT ME
-            </h2>
-            <div className="mb-6 h-1 w-32 bg-[#0a0a0a]" />
-            <div className="space-y-4 text-[#4b4b4b] leading-relaxed text-sm sm:text-base">
-              <p>
-                Saya adalah seorang pengembang web dan desainer yang berbasis di Indonesia. Dengan pengalaman dalam membangun berbagai macam proyek digital, saya selalu berusaha menciptakan solusi yang tidak hanya fungsional tapi juga memiliki karakter.
-              </p>
-              <p>
-                Pendekatan saya menggabungkan kebersihan kode dengan keberanian visual — setiap proyek adalah kesempatan untuk mengeksplorasi batas antara fungsi dan ekspresi.
-              </p>
-            </div>
+          <div className="flex flex-col justify-center lg:col-span-8">
+            <Reveal direction="up" delay={0.1}>
+              <h2 className="mb-6 text-3xl font-black uppercase leading-[0.85] tracking-[-0.1em] sm:text-4xl md:text-5xl">
+                ABOUT ME
+              </h2>
+            </Reveal>
+
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: "8rem" }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="mb-6 h-1 bg-ink"
+            />
+
+            <RevealGroup stagger={0.12} className="space-y-4 text-sm leading-relaxed text-muted sm:text-base">
+              <RevealItem>
+                <p>
+                  Saya adalah seorang pengembang web dan desainer yang berbasis di
+                  Indonesia. Dengan pengalaman dalam membangun berbagai macam proyek
+                  digital, saya selalu berusaha menciptakan solusi yang tidak hanya
+                  fungsional tapi juga memiliki karakter.
+                </p>
+              </RevealItem>
+              <RevealItem>
+                <p>
+                  Pendekatan saya menggabungkan kebersihan kode dengan keberanian
+                  visual — setiap proyek adalah kesempatan untuk mengeksplorasi batas
+                  antara fungsi dan ekspresi.
+                </p>
+              </RevealItem>
+            </RevealGroup>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-4 mt-10">
-              <div className="border-2 border-[#0a0a0a] p-4 bg-white shadow-[4px_4px_0_#0a0a0a]">
-                <div className="text-2xl sm:text-3xl font-black text-[#0a0a0a]">3+</div>
-                <div className="text-xs font-bold tracking-[0.15em] uppercase mt-1 text-[#0a0a0a]/60">Tahun</div>
-              </div>
-              <div className="border-2 border-[#0a0a0a] p-4 bg-white shadow-[4px_4px_0_#0a0a0a]">
-                <div className="text-2xl sm:text-3xl font-black text-[#0a0a0a]">20+</div>
-                <div className="text-xs font-bold tracking-[0.15em] uppercase mt-1 text-[#0a0a0a]/60">Proyek</div>
-              </div>
-              <div className="border-2 border-[#0a0a0a] p-4 bg-white shadow-[4px_4px_0_#0a0a0a]">
-                <div className="text-2xl sm:text-3xl font-black text-[#0a0a0a]">15+</div>
-                <div className="text-xs font-bold tracking-[0.15em] uppercase mt-1 text-[#0a0a0a]/60">Klien</div>
-              </div>
-            </div>
-          </motion.div>
+            <RevealGroup stagger={0.12} delayChildren={0.15} className="mt-10 grid grid-cols-3 gap-4">
+              {stats.map((stat) => (
+                <RevealItem key={stat.label}>
+                  <motion.div
+                    whileHover={{ y: -6, x: -3, rotate: -1.5 }}
+                    transition={{ type: "spring", stiffness: 320, damping: 18 }}
+                    className="border-2 border-ink bg-surface p-4 shadow-brutal hover:shadow-brutal-lg"
+                  >
+                    <div className="text-2xl font-black text-ink sm:text-3xl">
+                      {stat.value}
+                    </div>
+                    <div className="mt-1 text-xs font-bold uppercase tracking-[0.15em] text-ink/60">
+                      {stat.label}
+                    </div>
+                  </motion.div>
+                </RevealItem>
+              ))}
+            </RevealGroup>
+          </div>
         </div>
       </div>
     </section>
