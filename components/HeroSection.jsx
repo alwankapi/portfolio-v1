@@ -4,7 +4,86 @@ import BlurText from "@/components/BlurText";
 import DecryptedText from "@/components/DecryptedText";
 import Folder from "@/components/Folder";
 import FolderCardItem from "@/components/FolderCardItem";
+import MarqueeDivider from "@/components/MarqueeDivider";
 import { motion } from "framer-motion";
+
+/** Small git-branch glyph used next to the latest commit line. */
+function GitBranchIcon({ className = "" }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={className}
+    >
+      <line x1="6" y1="3" x2="6" y2="15" />
+      <circle cx="18" cy="6" r="3" />
+      <circle cx="6" cy="18" r="3" />
+      <path d="M18 9a9 9 0 0 1-9 9" />
+    </svg>
+  );
+}
+
+function LiveStatusPanel() {
+  return (
+    <motion.aside
+      initial={{ opacity: 0, x: 32 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      className="lg:col-span-4"
+      aria-label="Live status"
+    >
+      <div className="border-2 border-[#0a0a0a] bg-white shadow-[8px_8px_0_#0a0a0a]">
+        {/* Header bar */}
+        <div className="flex items-center justify-between border-b-2 border-[#0a0a0a] bg-[#0a0a0a] px-4 py-2">
+          <span className="text-xs font-black uppercase tracking-[0.22em] text-[#f7f7f2] sm:text-sm">
+            Live Status
+          </span>
+          <span className="font-mono text-[0.6rem] uppercase tracking-[0.2em] text-[#f7f7f2]/70">
+            /feed
+          </span>
+        </div>
+
+        <div className="space-y-5 p-4 sm:p-5">
+          {/* Availability */}
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="status-dot" aria-hidden="true" />
+              <span className="font-mono text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[#4b4b4b]">
+                Open to opportunities
+              </span>
+            </div>
+            <p className="mt-2 font-mono text-sm font-bold uppercase tracking-[0.08em] text-[#0a0a0a]">
+              Full-Time / Freelance
+            </p>
+          </div>
+
+          <div className="h-[2px] w-full bg-[#0a0a0a]" />
+
+          {/* Latest commit */}
+          <div>
+            <div className="flex items-center gap-2">
+              <GitBranchIcon className="h-3.5 w-3.5 text-[#0a0a0a]" />
+              <span className="font-mono text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[#4b4b4b]">
+                Latest repo commit
+              </span>
+            </div>
+            <p className="mt-2 break-words border-2 border-[#0a0a0a] bg-[#f7f7f2] px-3 py-2 font-mono text-xs text-[#0a0a0a]">
+              feat: add filter to projects
+            </p>
+            <p className="mt-2 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-[#4b4b4b]">
+              2hr ago
+            </p>
+          </div>
+        </div>
+      </div>
+    </motion.aside>
+  );
+}
 
 export default function HeroSection() {
   const scrollTo = (id) => {
@@ -28,13 +107,13 @@ export default function HeroSection() {
         className="hero-splash absolute left-1/2 top-1/2 h-[38rem] w-[38rem] -translate-x-1/2 -translate-y-1/2 rounded-full"
       />
 
-      <div className="relative z-10 mx-auto flex min-h-[calc(100vh-4rem)] max-w-7xl flex-col justify-between">
-        <div className="py-24 sm:py-16">
+      <div className="relative z-10 mx-auto flex min-h-[calc(100vh-4rem)] max-w-7xl flex-col justify-center">
+        <div className="grid grid-cols-1 items-center gap-10 pb-8 pt-24 sm:pt-16 lg:grid-cols-12 lg:gap-12">
           <motion.div
             initial={{ opacity: 0, scale: 0.96, y: 24 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="relative"
+            className="relative lg:col-span-8"
           >
             <div
               aria-hidden="true"
@@ -108,7 +187,19 @@ export default function HeroSection() {
               encryptedClassName="mt-6 max-w-3xl text-sm font-bold uppercase tracking-[0.18em] text-[#4b4b4b] sm:text-base"
             />
           </motion.div>
+
+          <LiveStatusPanel />
         </div>
+
+        {/* Services ticker — lives inside the hero, below the subheader */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          className="-mx-6 mt-16 sm:-mx-10 sm:mt-20 lg:-mx-16 lg:mt-24"
+        >
+          <MarqueeDivider />
+        </motion.div>
       </div>
     </section>
   );

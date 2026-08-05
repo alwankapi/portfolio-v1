@@ -3,7 +3,6 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
 import KineticGrid from "@/components/KineticGrid";
-import MarqueeDivider from "@/components/MarqueeDivider";
 import Navbar from "@/components/Navbar";
 import NoiseOverlay from "@/components/NoiseOverlay";
 import ProjectSection from "@/components/ProjectSection";
@@ -29,7 +28,6 @@ export default function Home() {
       {/* No scroll-snap here — Lenis owns the scrolling now. */}
       <div className="relative z-10">
         <HeroSection />
-        <MarqueeDivider />
         <AboutSection />
         <ProjectSection />
         <TechSkillSection />
