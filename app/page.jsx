@@ -3,10 +3,10 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
 import KineticGrid from "@/components/KineticGrid";
-import Navbar from "@/components/Navbar";
 import NoiseOverlay from "@/components/NoiseOverlay";
 import ProjectSection from "@/components/ProjectSection";
 import TechSkillSection from "@/components/TechSkillSection";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Home() {
   return (
@@ -24,7 +24,12 @@ export default function Home() {
         />
       </div>
       <NoiseOverlay />
-      <Navbar />
+
+      {/* Nav bar removed — the theme switch stays as a standalone floating control. */}
+      <div className="fixed right-4 top-4 z-50 sm:right-8 sm:top-7">
+        <ThemeToggle className="rounded-full" />
+      </div>
+
       {/* No scroll-snap here — Lenis owns the scrolling now. */}
       <div className="relative z-10">
         <HeroSection />

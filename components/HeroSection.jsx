@@ -5,6 +5,7 @@ import DecryptedText from "@/components/DecryptedText";
 import Folder from "@/components/Folder";
 import FolderCardItem from "@/components/FolderCardItem";
 import MarqueeDivider from "@/components/MarqueeDivider";
+import { useTheme } from "@/components/ThemeProvider";
 import { motion } from "framer-motion";
 
 /** Small git-branch glyph used next to the latest commit line. */
@@ -37,13 +38,13 @@ function LiveStatusPanel() {
       className="lg:col-span-4"
       aria-label="Live status"
     >
-      <div className="border-2 border-[#0a0a0a] bg-white shadow-[8px_8px_0_#0a0a0a]">
+      <div className="border-2 border-ink bg-surface shadow-brutal-lg">
         {/* Header bar */}
-        <div className="flex items-center justify-between border-b-2 border-[#0a0a0a] bg-[#0a0a0a] px-4 py-2">
-          <span className="text-xs font-black uppercase tracking-[0.22em] text-[#f7f7f2] sm:text-sm">
+        <div className="flex items-center justify-between border-b-2 border-ink bg-ink px-4 py-2">
+          <span className="text-xs font-black uppercase tracking-[0.22em] text-paper sm:text-sm">
             Live Status
           </span>
-          <span className="font-mono text-[0.6rem] uppercase tracking-[0.2em] text-[#f7f7f2]/70">
+          <span className="font-mono text-[0.6rem] uppercase tracking-[0.2em] text-paper/70">
             /feed
           </span>
         </div>
@@ -53,29 +54,29 @@ function LiveStatusPanel() {
           <div>
             <div className="flex items-center gap-2">
               <span className="status-dot" aria-hidden="true" />
-              <span className="font-mono text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[#4b4b4b]">
+              <span className="font-mono text-[0.65rem] font-bold uppercase tracking-[0.2em] text-muted">
                 Open to opportunities
               </span>
             </div>
-            <p className="mt-2 font-mono text-sm font-bold uppercase tracking-[0.08em] text-[#0a0a0a]">
+            <p className="mt-2 font-mono text-sm font-bold uppercase tracking-[0.08em] text-ink">
               Full-Time / Freelance
             </p>
           </div>
 
-          <div className="h-[2px] w-full bg-[#0a0a0a]" />
+          <div className="h-[2px] w-full bg-ink" />
 
           {/* Latest commit */}
           <div>
             <div className="flex items-center gap-2">
-              <GitBranchIcon className="h-3.5 w-3.5 text-[#0a0a0a]" />
-              <span className="font-mono text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[#4b4b4b]">
+              <GitBranchIcon className="h-3.5 w-3.5 text-ink" />
+              <span className="font-mono text-[0.65rem] font-bold uppercase tracking-[0.2em] text-muted">
                 Latest repo commit
               </span>
             </div>
-            <p className="mt-2 break-words border-2 border-[#0a0a0a] bg-[#f7f7f2] px-3 py-2 font-mono text-xs text-[#0a0a0a]">
+            <p className="mt-2 break-words border-2 border-ink bg-paper px-3 py-2 font-mono text-xs text-ink">
               feat: add filter to projects
             </p>
-            <p className="mt-2 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-[#4b4b4b]">
+            <p className="mt-2 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-muted">
               2hr ago
             </p>
           </div>
@@ -86,6 +87,11 @@ function LiveStatusPanel() {
 }
 
 export default function HeroSection() {
+  const { theme } = useTheme();
+  // Folder.jsx takes a literal hex (it darkens it in JS), so it can't read the
+  // CSS custom properties — feed it the ink colour for the active theme.
+  const folderColor = theme === "dark" ? "#f4f4f0" : "#0a0a0a";
+
   const scrollTo = (id) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -94,7 +100,7 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="grid-paper relative min-h-screen snap-start overflow-hidden bg-[#f7f7f2] px-6 py-8 text-[#0a0a0a] sm:px-10 lg:px-16"
+      className="grid-paper relative min-h-screen snap-start overflow-hidden bg-paper px-6 py-8 text-ink sm:px-10 lg:px-16"
     >
       <motion.div
         aria-hidden="true"
@@ -117,10 +123,10 @@ export default function HeroSection() {
           >
             <div
               aria-hidden="true"
-              className="absolute -left-3 top-5 h-20 w-20 border-2 border-[#0a0a0a] bg-white shadow-[8px_8px_0_#0a0a0a] sm:h-28 sm:w-28"
+              className="absolute -left-3 top-5 h-20 w-20 border-2 border-ink bg-surface shadow-brutal-lg sm:h-28 sm:w-28"
             />
 
-            <h1 className="relative max-w-6xl text-[clamp(4.3rem,14vw,13rem)] font-black uppercase leading-[0.78] tracking-[-0.1em] text-[#0a0a0a]">
+            <h1 className="relative max-w-6xl text-[clamp(4.3rem,14vw,13rem)] font-black uppercase leading-[0.78] tracking-[-0.1em] text-ink">
               <BlurText
                 text="PORT"
                 delay={150}
@@ -142,7 +148,7 @@ export default function HeroSection() {
                   className="mb-4 ml-8 inline-flex flex-col items-center sm:mb-6 sm:ml-12"
                 >
                   <Folder
-                    color="#0a0a0a"
+                    color={folderColor}
                     size={1.5}
                     items={[
                       <FolderCardItem
@@ -173,7 +179,7 @@ export default function HeroSection() {
               initial={{ width: 0 }}
               animate={{ width: "min(100%, 760px)" }}
               transition={{ duration: 1.1, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-6 h-3 bg-[#0a0a0a] sm:h-4"
+              className="mt-6 h-3 bg-ink sm:h-4"
             />
 
             <DecryptedText
@@ -183,8 +189,8 @@ export default function HeroSection() {
               maxIterations={15}
               sequential={true}
               revealDirection="start"
-              className="mt-6 max-w-3xl text-sm font-bold uppercase tracking-[0.18em] text-[#4b4b4b] sm:text-base"
-              encryptedClassName="mt-6 max-w-3xl text-sm font-bold uppercase tracking-[0.18em] text-[#4b4b4b] sm:text-base"
+              className="mt-6 max-w-3xl text-sm font-bold uppercase tracking-[0.18em] text-muted sm:text-base"
+              encryptedClassName="mt-6 max-w-3xl text-sm font-bold uppercase tracking-[0.18em] text-muted sm:text-base"
             />
           </motion.div>
 
