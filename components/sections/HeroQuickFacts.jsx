@@ -10,7 +10,7 @@ import {
   Target,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-import MagneticButton from "@/components/MagneticButton";
+import MagneticButton from "@/components/ui/MagneticButton";
 
 /**
  * Hero side panel — an at-a-glance profile summary plus the two primary

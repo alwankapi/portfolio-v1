@@ -1,12 +1,12 @@
 "use client";
 
-import BlurText from "@/components/BlurText";
-import DecryptedText from "@/components/DecryptedText";
-import Folder from "@/components/Folder";
-import FolderCardItem from "@/components/FolderCardItem";
-import HeroQuickFacts from "@/components/HeroQuickFacts";
-import MarqueeDivider from "@/components/MarqueeDivider";
-import { useTheme } from "@/components/ThemeProvider";
+import BlurText from "@/components/ui/BlurText";
+import DecryptedText from "@/components/ui/DecryptedText";
+import Folder from "@/components/ui/Folder";
+import FolderCardItem from "@/components/ui/FolderCardItem";
+import HeroQuickFacts from "@/components/sections/HeroQuickFacts";
+import MarqueeDivider from "@/components/ui/MarqueeDivider";
+import { useTheme } from "@/components/providers/ThemeProvider";
 import { motion } from "framer-motion";
 
 export default function HeroSection() {
@@ -65,7 +65,7 @@ export default function HeroSection() {
                   direction="top"
                 />
                 <motion.span
-                  initial={{ opacity: 0, filter: "blur(12px)", y: -18 }}
+                    initial={{ opacity: 0, filter: "blur(12px)", y: -18 }}
                   animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
                   transition={{ duration: 0.7, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
                   className="mb-4 ml-8 inline-flex flex-col items-center sm:mb-6 sm:ml-12"

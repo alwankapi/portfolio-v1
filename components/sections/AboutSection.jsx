@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Reveal, { RevealGroup, RevealItem } from "@/components/Reveal";
-import TiltCard from "@/components/TiltCard";
+import Reveal, { RevealGroup, RevealItem } from "@/components/ui/Reveal";
+import TiltCard from "@/components/ui/TiltCard";
 
 const stats = [
   { value: "3+", label: "Tahun" },

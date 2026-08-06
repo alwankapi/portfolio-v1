@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Reveal, { RevealGroup, RevealItem } from "@/components/Reveal";
-import { useTheme } from "@/components/ThemeProvider";
+import Reveal, { RevealGroup, RevealItem } from "@/components/ui/Reveal";
+import { useTheme } from "@/components/providers/ThemeProvider";
 import { FiPenTool as PenTool } from "react-icons/fi";
 import {
   SiHtml5,

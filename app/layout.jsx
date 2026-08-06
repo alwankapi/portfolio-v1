@@ -1,8 +1,8 @@
 import { Space_Grotesk } from "next/font/google";
-import CustomCursor from "@/components/CustomCursor";
-import ScrollProgress from "@/components/ScrollProgress";
-import SmoothScrollProvider from "@/components/SmoothScrollProvider";
-import ThemeProvider from "@/components/ThemeProvider";
+import CustomCursor from "@/components/providers/CustomCursor";
+import ScrollProgress from "@/components/layout/ScrollProgress";
+import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
+import ThemeProvider from "@/components/providers/ThemeProvider";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({

@@ -3,8 +3,8 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { AlertTriangle, CheckCircle2, Loader2, Mail, Send, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import MagneticButton from "@/components/MagneticButton";
-import Reveal, { RevealGroup, RevealItem } from "@/components/Reveal";
+import MagneticButton from "@/components/ui/MagneticButton";
+import Reveal, { RevealGroup, RevealItem } from "@/components/ui/Reveal";
 
 const contactLinks = [
   {

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowUp } from "lucide-react";
-import MagneticButton from "@/components/MagneticButton";
+import MagneticButton from "@/components/ui/MagneticButton";
 
 export default function Footer() {
   const scrollToTop = () => {

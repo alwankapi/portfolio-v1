@@ -3,9 +3,9 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { useMemo, useState } from "react";
-import MagneticButton from "@/components/MagneticButton";
-import Reveal from "@/components/Reveal";
-import TiltCard from "@/components/TiltCard";
+import MagneticButton from "@/components/ui/MagneticButton";
+import Reveal from "@/components/ui/Reveal";
+import TiltCard from "@/components/ui/TiltCard";
 
 const FALLBACK_IMAGE = "/images/mockup-fallback.svg";
 
