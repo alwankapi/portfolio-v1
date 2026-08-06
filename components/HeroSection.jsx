@@ -155,18 +155,21 @@ export default function HeroSection() {
                         key="about"
                         icon="user"
                         label="About"
+                        accent="#d01b1b"
                         onClick={() => scrollTo("about")}
                       />,
                       <FolderCardItem
                         key="projects"
                         icon="code"
                         label="Portfolio"
+                        accent="#0a0a0a"
                         onClick={() => scrollTo("projects")}
                       />,
                       <FolderCardItem
                         key="contact"
                         icon="briefcase"
                         label="Contact"
+                        accent="#1d4ed8"
                         onClick={() => scrollTo("contact")}
                       />,
                     ]}

@@ -1,6 +1,7 @@
 "use client";
 
 import { Briefcase, Code, Folder as FolderIcon, User } from "lucide-react";
+import "./FolderCardItem.css";
 
 const ICONS = {
   user: User,
@@ -9,7 +10,12 @@ const ICONS = {
   briefcase: Briefcase,
 };
 
-export default function FolderCardItem({ icon = "folder", label, onClick }) {
+export default function FolderCardItem({
+  icon = "folder",
+  label,
+  accent = "#d01b1b",
+  onClick,
+}) {
   const Icon = ICONS[icon] || User;
 
   const handleClick = (e) => {
@@ -30,13 +36,19 @@ export default function FolderCardItem({ icon = "folder", label, onClick }) {
       type="button"
       onClick={handleClick}
       onKeyDown={handleKeyDown}
-      className="folder-card-item flex h-full w-full cursor-pointer flex-col items-center justify-center gap-1 text-[#0a0a0a] transition-transform hover:scale-110"
+      className="folder-card-item fc-card"
+      style={{ "--fc-accent": accent }}
       aria-label={label}
     >
-      <Icon size={16} strokeWidth={2.5} aria-hidden="true" />
-      <span className="text-[9px] font-bold uppercase tracking-tight">
-        {label}
+      <span className="fc-card__corner fc-card__corner--tl" aria-hidden="true" />
+      <span className="fc-card__corner fc-card__corner--br" aria-hidden="true" />
+
+      <span className="fc-card__icon">
+        <Icon size={15} strokeWidth={2.6} aria-hidden="true" />
       </span>
+
+      <span className="fc-card__label">{label}</span>
+      <span className="fc-card__rule" aria-hidden="true" />
     </button>
   );
 }

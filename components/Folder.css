@@ -7,8 +7,9 @@
 }
 
 .folder {
-  transition: all 0.2s ease-in;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   cursor: pointer;
+  filter: drop-shadow(0 10px 18px rgba(10, 10, 10, 0.22));
 }
 
 .folder:not(.folder--click):hover {
@@ -95,7 +96,11 @@
   height: 80%;
   background: var(--paper-1);
   border-radius: 10px;
-  transition: all 0.3s ease-in-out;
+  box-shadow: 0 3px 10px rgba(10, 10, 10, 0.16);
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.35s ease-in-out,
+    box-shadow 0.35s ease;
 }
 
 .paper:nth-child(2) {
@@ -125,4 +130,17 @@
   outline: 2px solid #ffffff;
   outline-offset: 4px;
   border-radius: 10px;
+}
+
+/* Papers hold interactive cards — let them float a bit higher when open */
+.folder.open .paper {
+  box-shadow: 0 8px 20px rgba(10, 10, 10, 0.28);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .folder,
+  .paper,
+  .folder__front {
+    transition: none !important;
+  }
 }
