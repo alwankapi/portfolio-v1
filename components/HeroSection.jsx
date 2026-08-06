@@ -4,87 +4,10 @@ import BlurText from "@/components/BlurText";
 import DecryptedText from "@/components/DecryptedText";
 import Folder from "@/components/Folder";
 import FolderCardItem from "@/components/FolderCardItem";
+import HeroQuickFacts from "@/components/HeroQuickFacts";
 import MarqueeDivider from "@/components/MarqueeDivider";
 import { useTheme } from "@/components/ThemeProvider";
 import { motion } from "framer-motion";
-
-/** Small git-branch glyph used next to the latest commit line. */
-function GitBranchIcon({ className = "" }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.4"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      className={className}
-    >
-      <line x1="6" y1="3" x2="6" y2="15" />
-      <circle cx="18" cy="6" r="3" />
-      <circle cx="6" cy="18" r="3" />
-      <path d="M18 9a9 9 0 0 1-9 9" />
-    </svg>
-  );
-}
-
-function LiveStatusPanel() {
-  return (
-    <motion.aside
-      initial={{ opacity: 0, x: 32 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="lg:col-span-4"
-      aria-label="Live status"
-    >
-      <div className="border-2 border-ink bg-surface shadow-brutal-lg">
-        {/* Header bar */}
-        <div className="flex items-center justify-between border-b-2 border-ink bg-ink px-4 py-2">
-          <span className="text-xs font-black uppercase tracking-[0.22em] text-paper sm:text-sm">
-            Live Status
-          </span>
-          <span className="font-mono text-[0.6rem] uppercase tracking-[0.2em] text-paper/70">
-            /feed
-          </span>
-        </div>
-
-        <div className="space-y-5 p-4 sm:p-5">
-          {/* Availability */}
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="status-dot" aria-hidden="true" />
-              <span className="font-mono text-[0.65rem] font-bold uppercase tracking-[0.2em] text-muted">
-                Open to opportunities
-              </span>
-            </div>
-            <p className="mt-2 font-mono text-sm font-bold uppercase tracking-[0.08em] text-ink">
-              Full-Time / Freelance
-            </p>
-          </div>
-
-          <div className="h-[2px] w-full bg-ink" />
-
-          {/* Latest commit */}
-          <div>
-            <div className="flex items-center gap-2">
-              <GitBranchIcon className="h-3.5 w-3.5 text-ink" />
-              <span className="font-mono text-[0.65rem] font-bold uppercase tracking-[0.2em] text-muted">
-                Latest repo commit
-              </span>
-            </div>
-            <p className="mt-2 break-words border-2 border-ink bg-paper px-3 py-2 font-mono text-xs text-ink">
-              feat: add filter to projects
-            </p>
-            <p className="mt-2 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-muted">
-              2hr ago
-            </p>
-          </div>
-        </div>
-      </div>
-    </motion.aside>
-  );
-}
 
 export default function HeroSection() {
   const { theme } = useTheme();
@@ -197,7 +120,7 @@ export default function HeroSection() {
             />
           </motion.div>
 
-          <LiveStatusPanel />
+          <HeroQuickFacts onNavigate={scrollTo} />
         </div>
 
         {/* Services ticker — lives inside the hero, below the subheader */}

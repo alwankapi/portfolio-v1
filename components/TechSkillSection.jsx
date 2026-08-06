@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Reveal, { RevealGroup, RevealItem } from "@/components/Reveal";
+import { useTheme } from "@/components/ThemeProvider";
 import { FiPenTool as PenTool } from "react-icons/fi";
 import {
   SiHtml5,
@@ -40,7 +41,7 @@ const skillCategories = [
       { name: "CSS", icon: SiCss, color: "#264DE4" },
       { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
       { name: "React", icon: SiReact, color: "#61DAFB" },
-      { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
+      { name: "Next.js", icon: SiNextdotjs, color: "#000000", darkColor: "#FFFFFF" },
       { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
     ],
   },
@@ -72,8 +73,8 @@ const skillCategories = [
     skills: [
       { name: "Figma", icon: SiFigma, color: "#F24E1E" },
       { name: "Canva", icon: SiCanva, color: "#00C4CC" },
-      { name: "Inkscape", icon: SiInkscape, color: "#000000" },
-      { name: "UI/UX", icon: PenTool, color: "#0a0a0a" },
+      { name: "Inkscape", icon: SiInkscape, color: "#000000", darkColor: "#FFFFFF" },
+      { name: "UI/UX", icon: PenTool, color: "#0a0a0a", darkColor: "#F4F4F0" },
     ],
   },
   {
@@ -86,15 +87,18 @@ const skillCategories = [
     bgColor: "bg-brand/10",
     skills: [
       { name: "Git", icon: SiGit, color: "#F05032" },
-      { name: "GitHub", icon: SiGithub, color: "#181717" },
+      { name: "GitHub", icon: SiGithub, color: "#181717", darkColor: "#FFFFFF" },
       { name: "VS Code", icon: SiVscodium, color: "#0078D4" },
-      { name: "Vercel", icon: SiVercel, color: "#000000" },
+      { name: "Vercel", icon: SiVercel, color: "#000000", darkColor: "#FFFFFF" },
       { name: "Linux", icon: SiLinux, color: "#FCC624" },
     ],
   },
 ];
 
 export default function TechSkillSection() {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+
   return (
     <section
       id="skills"
@@ -170,7 +174,15 @@ export default function TechSkillSection() {
                       className="skill-tag relative inline-flex cursor-default items-center gap-1.5 border-2 border-ink bg-surface px-4 py-2 text-sm font-bold text-ink"
                     >
                       {skill.icon && (
-                        <skill.icon className="h-4 w-4" style={{ color: skill.color }} />
+                        <skill.icon
+                          className="h-4 w-4"
+                          style={{
+                            color:
+                              isDark && skill.darkColor
+                                ? skill.darkColor
+                                : skill.color,
+                          }}
+                        />
                       )}
                       {skill.name}
                     </motion.div>

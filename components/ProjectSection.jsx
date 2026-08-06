@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import { useMemo, useState } from "react";
 import MagneticButton from "@/components/MagneticButton";
 import Reveal from "@/components/Reveal";
@@ -9,12 +9,14 @@ import TiltCard from "@/components/TiltCard";
 
 const FALLBACK_IMAGE = "/images/mockup-fallback.svg";
 
+/** How many cards are visible before the user expands the grid. */
+const PREVIEW_COUNT = 2;
+
 const projects = [
   {
     title: "Amanah House",
     desc: "Platform e-commerce properti dengan fokus pada UX yang bersih dan performa tinggi untuk jual beli rumah.",
     tags: ["E-Commerce"],
-    categories: ["frontend", "backend"],
     year: "2024",
     demo: "https://amanah-house.iceiy.com/?i=1",
     // Locally rendered high-res mockup — no more broken external screenshot service.
@@ -24,7 +26,6 @@ const projects = [
     title: "Analytics Dashboard",
     desc: "Dashboard analitik real-time dengan visualisasi data yang interaktif untuk monitoring bisnis.",
     tags: ["Dashboard"],
-    categories: ["frontend", "backend"],
     year: "2024",
     demo: "#",
     image: "https://picsum.photos/seed/analytics-dashboard/1600/1000.jpg",
@@ -33,7 +34,6 @@ const projects = [
     title: "Startup Landing",
     desc: "Halaman landing untuk startup teknologi dengan animasi modern dan tingkat konversi tinggi.",
     tags: ["Landing Page"],
-    categories: ["frontend", "uiux"],
     year: "2023",
     demo: "#",
     image: "https://picsum.photos/seed/startup-landing-page/1600/1000.jpg",
@@ -42,19 +42,12 @@ const projects = [
     title: "Mobile App UI",
     desc: "Desain aplikasi mobile untuk tracking aktivitas fitness dengan antarmuka minimalis.",
     tags: ["Mobile App"],
-    categories: ["uiux"],
     year: "2023",
     demo: "#",
     image: "https://picsum.photos/seed/mobile-fitness-app/1600/1000.jpg",
   },
 ];
 
-const filters = [
-  { id: "all", label: "All" },
-  { id: "uiux", label: "UI/UX" },
-  { id: "frontend", label: "Frontend" },
-  { id: "backend", label: "Backend" },
-];
 
 function ProjectCard({ project }) {
   const [src, setSrc] = useState(project.image);
@@ -106,12 +99,15 @@ function ProjectCard({ project }) {
 }
 
 export default function ProjectSection() {
-  const [activeFilter, setActiveFilter] = useState("all");
+  const [expanded, setExpanded] = useState(false);
 
-  const visibleProjects = useMemo(() => {
-    if (activeFilter === "all") return projects;
-    return projects.filter((p) => p.categories.includes(activeFilter));
-  }, [activeFilter]);
+  const visibleProjects = useMemo(
+    () => (expanded ? projects : projects.slice(0, PREVIEW_COUNT)),
+    [expanded]
+  );
+
+  const hasMore = projects.length > PREVIEW_COUNT;
+  const hiddenCount = projects.length - PREVIEW_COUNT;
 
   return (
     <section
@@ -136,44 +132,8 @@ export default function ProjectSection() {
           whileInView={{ width: "8rem" }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-8 h-1 bg-ink"
+          className="mb-10 h-1 bg-ink"
         />
-
-        {/* Filters */}
-        <Reveal direction="up" delay={0.1} className="mb-10">
-          <div
-            role="group"
-            aria-label="Filter projects by category"
-            className="flex flex-wrap gap-3"
-          >
-            {filters.map((filter) => {
-              const isActive = activeFilter === filter.id;
-              return (
-                <MagneticButton
-                  key={filter.id}
-                  strength={0.25}
-                  onClick={() => setActiveFilter(filter.id)}
-                  aria-pressed={isActive}
-                  className={`relative overflow-hidden border-2 border-ink px-5 py-2.5 text-xs font-black uppercase tracking-[0.18em] transition-shadow duration-200 ${
-                    isActive
-                      ? "text-paper shadow-brutal-md"
-                      : "bg-surface text-ink shadow-brutal hover:shadow-brutal-md"
-                  }`}
-                >
-                  {isActive && (
-                    <motion.span
-                      layoutId="filter-fill"
-                      aria-hidden="true"
-                      transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                      className="absolute inset-0 bg-ink"
-                    />
-                  )}
-                  <span className="relative z-10">{filter.label}</span>
-                </MagneticButton>
-              );
-            })}
-          </div>
-        </Reveal>
 
         {/* Project Grid */}
         <motion.div layout className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -184,18 +144,32 @@ export default function ProjectSection() {
           </AnimatePresence>
         </motion.div>
 
-        <AnimatePresence>
-          {visibleProjects.length === 0 && (
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              className="mt-10 border-2 border-dashed border-ink/40 p-8 text-center text-sm font-black uppercase tracking-[0.2em] text-ink/50"
+        {/* Show all / show less toggle */}
+        {hasMore && (
+          <motion.div layout className="mt-10 flex justify-center">
+            <MagneticButton
+              strength={0.28}
+              onClick={() => setExpanded((prev) => !prev)}
+              aria-expanded={expanded}
+              className="group relative inline-flex items-center gap-3 overflow-hidden border-2 border-ink bg-surface px-7 py-3.5 text-xs font-black uppercase tracking-[0.18em] text-ink shadow-brutal transition-shadow duration-200 hover:shadow-brutal-md"
             >
-              No projects in this category yet
-            </motion.p>
-          )}
-        </AnimatePresence>
+              <span
+                aria-hidden="true"
+                className="absolute inset-0 origin-bottom scale-y-0 bg-ink transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-y-100"
+              />
+              <span className="relative z-10 transition-colors duration-300 group-hover:text-paper">
+                {expanded ? "Show Less" : `Show All (+${hiddenCount})`}
+              </span>
+              <motion.span
+                animate={{ rotate: expanded ? 180 : 0 }}
+                transition={{ type: "spring", stiffness: 320, damping: 22 }}
+                className="relative z-10 transition-colors duration-300 group-hover:text-paper"
+              >
+                <ChevronDown className="h-4 w-4" />
+              </motion.span>
+            </MagneticButton>
+          </motion.div>
+        )}
       </div>
     </section>
   );
