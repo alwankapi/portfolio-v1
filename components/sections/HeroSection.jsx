@@ -1,7 +1,6 @@
 "use client";
 
 import BlurText from "@/components/ui/BlurText";
-import DecryptedText from "@/components/ui/DecryptedText";
 import Folder from "@/components/ui/Folder";
 import FolderCardItem from "@/components/ui/FolderCardItem";
 import HeroQuickFacts from "@/components/sections/HeroQuickFacts";
@@ -37,12 +36,12 @@ export default function HeroSection() {
       />
 
       <div className="relative z-10 mx-auto flex min-h-[calc(100vh-4rem)] max-w-7xl flex-col justify-center">
-        <div className="grid grid-cols-1 items-center gap-10 pb-8 pt-24 sm:pt-16 lg:grid-cols-12 lg:gap-12">
+        <div className="grid grid-cols-1 items-stretch gap-10 pb-8 pt-24 sm:pt-16 lg:grid-cols-12 lg:gap-12">
           <motion.div
             initial={{ opacity: 0, scale: 0.96, y: 24 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="relative lg:col-span-8"
+            className="relative flex flex-col lg:col-span-8"
           >
             <div
               aria-hidden="true"
@@ -101,23 +100,16 @@ export default function HeroSection() {
               </span>
             </h1>
 
+            {/* Rule sits close under the wordmark, and the spacer below it
+                absorbs any leftover height so the column still matches the
+                Quick Facts panel on the right. */}
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: "min(100%, 760px)" }}
               transition={{ duration: 1.1, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
               className="mt-6 h-3 bg-ink sm:h-4"
             />
-
-            <DecryptedText
-              text="Web Developer | Program Analyst"
-              animateOn="view"
-              speed={80}
-              maxIterations={15}
-              sequential={true}
-              revealDirection="start"
-              className="mt-6 max-w-3xl text-sm font-bold uppercase tracking-[0.18em] text-muted sm:text-base"
-              encryptedClassName="mt-6 max-w-3xl text-sm font-bold uppercase tracking-[0.18em] text-muted sm:text-base"
-            />
+            <div aria-hidden="true" className="hidden lg:block lg:flex-1" />
           </motion.div>
 
           <HeroQuickFacts onNavigate={scrollTo} />
