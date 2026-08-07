@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import ProfilePhotoCard from "@/components/ui/ProfilePhotoCard";
 import Reveal, { RevealGroup, RevealItem } from "@/components/ui/Reveal";
-import TiltCard from "@/components/ui/TiltCard";
 
 const stats = [
   { value: "3+", label: "Tahun" },
@@ -28,26 +28,7 @@ export default function AboutSection() {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12">
           {/* Photo — 3D tilt frame */}
           <Reveal direction="right" amount={0.35} className="lg:col-span-4">
-            <TiltCard max={12} scale={1.03} className="group h-full">
-              <div className="border-2 border-ink bg-surface p-2 shadow-brutal-lg">
-                <div className="overflow-hidden">
-                  <img
-                    src="/images/foto-awank bergaya formal.png"
-                    alt="Portrait of Alwan Kapi Muntaha"
-                    className="aspect-[4/4.5] w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
-                  />
-                </div>
-                <div className="mt-4 px-2 pb-2">
-                  <h3 className="text-lg font-black uppercase tracking-tight sm:text-xl">
-                    Alwan Kapi Muntaha
-                  </h3>
-                  <div className="mb-3 mt-2 h-[2px] w-full bg-ink" />
-                  <p className="whitespace-nowrap text-xs font-bold uppercase tracking-[0.1em] text-ink/60 sm:text-sm">
-                    Web Developer | Program Analyst
-                  </p>
-                </div>
-              </div>
-            </TiltCard>
+            <ProfilePhotoCard variant="badge" />
           </Reveal>
 
           {/* Text */}
