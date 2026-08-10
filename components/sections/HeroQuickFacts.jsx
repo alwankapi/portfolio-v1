@@ -17,7 +17,7 @@ import MagneticButton from "@/components/ui/MagneticButton";
  * calls to action (hire / download CV).
  */
 
-const CV_URL = "/cv-alwan-kapi-muntaha.pdf";
+const CV_URL = "/Alwan Kapi Muntaha-cv.pdf";
 
 const FACTS = [
   {
@@ -29,8 +29,8 @@ const FACTS = [
   {
     icon: Briefcase,
     label: "Pengalaman",
-    value: "3+ Tahun",
-    note: "20+ proyek",
+    value: "2 Tahun",
+    note: "4 proyek",
   },
   {
     icon: Target,

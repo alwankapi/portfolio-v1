@@ -4,7 +4,7 @@ import TiltCard from "@/components/ui/TiltCard";
 
 const PHOTO = "/images/foto-awank bergaya formal.png";
 const NAME = "Alwan Kapi Muntaha";
-const ROLE = "Web Developer / Program Analyst";
+const ROLE = "Web Developer | Ai Enthusiast";
 
 /** Widths of the decorative barcode strip in the footer. */
 const BARCODE = [3, 1, 2, 1, 4, 1, 2, 3, 1, 2, 4, 1, 3, 2, 1, 3, 1, 4, 2, 1, 2, 3];

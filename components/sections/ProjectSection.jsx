@@ -17,16 +17,16 @@ const projects = [
     title: "Amanah House",
     desc: "Platform e-commerce properti dengan fokus pada UX yang bersih dan performa tinggi untuk jual beli rumah.",
     tags: ["E-Commerce"],
-    year: "2024",
+    year: "2026",
     demo: "https://amanah-house.iceiy.com/?i=1",
     // Locally rendered high-res mockup — no more broken external screenshot service.
-    image: "/images/mockup-amanah-house.svg",
+    image: "/images/mockup-amanah-house.png",
   },
   {
     title: "Analytics Dashboard",
     desc: "Dashboard analitik real-time dengan visualisasi data yang interaktif untuk monitoring bisnis.",
     tags: ["Dashboard"],
-    year: "2024",
+    year: "2025",
     demo: "#",
     image: "https://picsum.photos/seed/analytics-dashboard/1600/1000.jpg",
   },
@@ -34,7 +34,7 @@ const projects = [
     title: "Startup Landing",
     desc: "Halaman landing untuk startup teknologi dengan animasi modern dan tingkat konversi tinggi.",
     tags: ["Landing Page"],
-    year: "2023",
+    year: "2025",
     demo: "#",
     image: "https://picsum.photos/seed/startup-landing-page/1600/1000.jpg",
   },
@@ -42,7 +42,7 @@ const projects = [
     title: "Mobile App UI",
     desc: "Desain aplikasi mobile untuk tracking aktivitas fitness dengan antarmuka minimalis.",
     tags: ["Mobile App"],
-    year: "2023",
+    year: "2025",
     demo: "#",
     image: "https://picsum.photos/seed/mobile-fitness-app/1600/1000.jpg",
   },
@@ -62,12 +62,12 @@ function ProjectCard({ project }) {
     >
       <TiltCard max={9} scale={1.02} className="group h-full">
         <div className="project-card h-full border-2 border-ink bg-surface shadow-brutal-md transition-shadow duration-300 group-hover:shadow-brutal-xl">
-          <div className="overflow-hidden border-b-2 border-ink">
+          <div className="overflow-hidden border-b-2 border-ink bg-white">
             <img
               src={src}
               onError={() => setSrc(FALLBACK_IMAGE)}
               alt={`${project.title} preview`}
-              className="project-img aspect-[16/10] w-full object-cover grayscale transition-all duration-500"
+              className="project-img aspect-[16/10] w-full object-contain grayscale transition-all duration-500"
               loading="lazy"
             />
           </div>

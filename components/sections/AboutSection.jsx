@@ -5,9 +5,9 @@ import ProfilePhotoCard from "@/components/ui/ProfilePhotoCard";
 import Reveal, { RevealGroup, RevealItem } from "@/components/ui/Reveal";
 
 const stats = [
-  { value: "3+", label: "Tahun" },
-  { value: "20+", label: "Proyek" },
-  { value: "15+", label: "Klien" },
+  { value: "2", label: "Tahun" },
+  { value: "4", label: "Proyek" },
+  { value: "1", label: "Klien" },
 ];
 
 export default function AboutSection() {
