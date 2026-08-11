@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight, ChevronDown, Github } from "lucide-react";
 import { useMemo, useState } from "react";
 import MagneticButton from "@/components/ui/MagneticButton";
 import Reveal from "@/components/ui/Reveal";
@@ -19,32 +19,31 @@ const projects = [
     tags: ["E-Commerce"],
     year: "2026",
     demo: "https://amanah-house.iceiy.com/?i=1",
-    // Locally rendered high-res mockup — no more broken external screenshot service.
     image: "/images/mockup-amanah-house.png",
   },
   {
-    title: "Analytics Dashboard",
-    desc: "Dashboard analitik real-time dengan visualisasi data yang interaktif untuk monitoring bisnis.",
-    tags: ["Dashboard"],
+    title: "Payroll System",
+    desc: "Sistem kelola gaji karyawan, pencatatan absensi, kalkulasi tunjangan, dan pelaporan penggajian.",
+    tags: ["Web System"],
     year: "2025",
-    demo: "#",
-    image: "https://picsum.photos/seed/analytics-dashboard/1600/1000.jpg",
+    github: "https://github.com/alwankapi/payroll-system",
+    image: "/images/mockup-fallback.svg",
   },
   {
-    title: "Startup Landing",
-    desc: "Halaman landing untuk startup teknologi dengan animasi modern dan tingkat konversi tinggi.",
-    tags: ["Landing Page"],
+    title: "Lost and Found App",
+    desc: "Platform penemuan dan pelaporan barang hilang untuk memudahkan pencarian dan pengembalian barang.",
+    tags: ["Web App"],
     year: "2025",
-    demo: "#",
-    image: "https://picsum.photos/seed/startup-landing-page/1600/1000.jpg",
+    github: "https://github.com/alwankapi/lost-and-found-app",
+    image: "/images/mockup-fallback.svg",
   },
   {
-    title: "Mobile App UI",
-    desc: "Desain aplikasi mobile untuk tracking aktivitas fitness dengan antarmuka minimalis.",
+    title: "Daily Activity App",
+    desc: "Aplikasi manajemen dan pencatatan aktivitas harian sederhana untuk meningkatkan produktivitas.",
     tags: ["Mobile App"],
     year: "2025",
-    demo: "#",
-    image: "https://picsum.photos/seed/mobile-fitness-app/1600/1000.jpg",
+    github: "https://github.com/alwankapi/Daily-Activity-App-sederhana",
+    image: "/images/mockup-fallback.svg",
   },
 ];
 
@@ -63,13 +62,24 @@ function ProjectCard({ project }) {
       <TiltCard max={9} scale={1.02} className="group h-full">
         <div className="project-card h-full border-2 border-ink bg-surface shadow-brutal-md transition-shadow duration-300 group-hover:shadow-brutal-xl">
           <div className="overflow-hidden border-b-2 border-ink bg-white">
-            <img
-              src={src}
-              onError={() => setSrc(FALLBACK_IMAGE)}
-              alt={`${project.title} preview`}
-              className="project-img aspect-[16/10] w-full object-contain grayscale transition-all duration-500"
-              loading="lazy"
-            />
+            {project.video ? (
+              <video
+                src={project.video}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="project-img aspect-[16/10] w-full object-cover grayscale transition-all duration-500"
+              />
+            ) : (
+              <img
+                src={src}
+                onError={() => setSrc(FALLBACK_IMAGE)}
+                alt={`${project.title} preview`}
+                className="project-img aspect-[16/10] w-full object-contain grayscale transition-all duration-500"
+                loading="lazy"
+              />
+            )}
           </div>
           <div className="p-5 sm:p-6">
             <div className="mb-3 flex items-center justify-between">
@@ -82,15 +92,28 @@ function ProjectCard({ project }) {
               {project.title}
             </h3>
             <p className="text-sm leading-relaxed text-muted">{project.desc}</p>
-            <a
-              href={project.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center gap-2 text-sm font-black uppercase tracking-wider text-ink transition-all group-hover:gap-3"
-            >
-              <span>View Project</span>
-              <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-            </a>
+            {project.demo ? (
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-2 text-sm font-black uppercase tracking-wider text-ink transition-all group-hover:gap-3"
+              >
+                <span>View Project</span>
+                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+              </a>
+            ) : project.github ? (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-2 text-sm font-black uppercase tracking-wider text-ink transition-all group-hover:gap-3"
+              >
+                <Github className="h-4 w-4" />
+                <span>GitHub Repo</span>
+                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+              </a>
+            ) : null}
           </div>
         </div>
       </TiltCard>
